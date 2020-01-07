@@ -16,3 +16,9 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('complain/categories', 'ComplainCategoryController@index');
+Route::get('external-links', 'ExternalLinkController@index');
+Route::get('social-links', 'ExternalLinkController@social');
+Route::get('about-cg-police', 'AboutPoliceController@show');
+Route::get('faqs', 'FaqsController@index');
