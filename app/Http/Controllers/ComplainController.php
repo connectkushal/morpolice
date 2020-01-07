@@ -16,26 +16,33 @@ class ComplainController extends Controller
     {
         // dd([$category, $subcategory]);
         // dd(request()->route()->parameters());
-        if($category == null && $subcategory == null) {
+        if($subcategory != null) {
+
+            $subcwise = \App\ComplainSubcategory::where('name', $subcategory)
+            ->with('complains')
+            ->get();
+            
+            $complains = $subcwise->first()->complains;
+        }
+    
+        elseif($category !== null && $subcategory == null) {
+            
+            $categorywise = \App\ComplainCategory::where('name', $category)
+            ->with('complains')
+            ->get();
+
+            $complains = $categorywise->first()->complains;
+        }
+        
+        else {
             $complains = \App\Complain::all();
         }
 
-        elseif($subcategory == null) {
-
-            $complains = \App\ComplainCategory::where('name', $category)
-                            ->with('complains')
-                            ->get();
-        }
-
-        else {
-            $complains = \App\ComplainSubcategory::where('name', $subcategory)
-            ->with('complains')
-            ->get();
-        }
+        //dd($complains->first());
 
         $categories = \App\ComplainCategory::with('subcategories')->get();
         
-        return view('admin.complain.dashboard', compact(['complains', 'categories']));
+        return view('admin.complain.dashboard', compact(['complains', 'categories', 'category', 'subcategory']));
     }
 
     /**

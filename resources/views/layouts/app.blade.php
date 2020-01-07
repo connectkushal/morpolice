@@ -20,6 +20,11 @@
         body{
             background-color: #f6f6f6;
         }
+
+        .level-is-shrinkable .level-left,
+        .level-is-shrinkable .level-right {
+            flex-shrink: 1;
+        }
         
     </style>
 
