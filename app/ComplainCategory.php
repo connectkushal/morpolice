@@ -12,4 +12,9 @@ class ComplainCategory extends Model
     {
         return $this->hasMany("App\ComplainSubcategory", "category_id");
     }
+
+    public function complains()
+    {
+        return $this->hasMany('App\Complain', 'category_id');
+    }
 }

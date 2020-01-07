@@ -13,4 +13,8 @@ class ComplainSubcategory extends Model
         return $this->belongsTo('App\ComplainCategory', 'category_id');
     }
 
+    public function complains()
+    {
+        return $this->hasMany('App\Complain', 'subcategory_id');
+    }
 }
