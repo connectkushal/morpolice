@@ -8,7 +8,7 @@
             <div class="box">
                 <aside class="menu">
                     <p class="menu-label">
-                        Show Complains
+                        Complains
                     </p>
                     <ul class="menu-list">
                         <li><a>Active</a></li>
@@ -65,7 +65,7 @@
                 <nav class="level level-is-shrinkable">
                     <!-- Left side -->
                     <div class="level-left">
-                        <div class="level-item">
+                        <div class="level-item ">
                             <p class="level-item">
                                 <a class="button {{$complain->status == "active" ? 'is-success' : ''}}">{{$complain->status}}</a>
                             </p>
@@ -84,9 +84,28 @@
       
                     </div>
                 </nav>
-                <div class="content">
-                    {{$complain->body}}
+                <div class="columns">
+                    <div class="column is-2">
+                        <strong>Message</strong>
+                    </div>
+                    <div class="column">
+                        <div class="content">
+                            <p> {{$complain->body}} </p>
+                        </div>
+                    </div>
                 </div>
+                  
+                <div class="columns">
+                    <div class="column is-2">
+                        <strong>Action Taken </strong>{{$complain->action_taken}}
+                    </div>
+                    <div class="content">
+                        <div class="column">
+                            <p> {{$complain->body}} </p>
+                        </div>
+                    </div>
+                </div>
+
                 <hr>
                 @endforeach
 

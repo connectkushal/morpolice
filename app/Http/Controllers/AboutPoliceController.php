@@ -46,10 +46,13 @@ class AboutPoliceController extends Controller
      */
     public function show()
     {
+        $aboutPolice = AboutPolice::latest()->first();
+
         if (\Request::isJson()) {
-            $aboutPolice = AboutPolice::latest()->first();
             return $aboutPolice;
         }
+
+        return view('about_police', compact('aboutPolice'));
 
     }
 

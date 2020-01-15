@@ -17,6 +17,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::post('complain', 'ComplainController@store');
+
 Route::get('complain/categories', 'ComplainCategoryController@index');
 Route::get('external-links', 'ExternalLinkController@index');
 Route::get('social-links', 'ExternalLinkController@social');

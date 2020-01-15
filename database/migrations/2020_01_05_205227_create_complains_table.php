@@ -20,7 +20,7 @@ class CreateComplainsTable extends Migration
             $table->unsignedBigInteger('appuser_id')->nullable();
             $table->text('body');
             $table->string('status')->default('active');
-            $table->string('action_taken')->nullable();
+            $table->string('action_taken')->default('pending');
             
             $table->timestamps();
             

@@ -54,6 +54,7 @@ Route::group(
     Route::post('social-links/create',"ExternalLinkController@storeSocial")
         ->name('create-social');
 
+    Route::get('about-cg-police', "AboutPoliceController@show");
     Route::get('about-cg-police/update', "AboutPoliceController@edit")
         ->name('cgp-form');
     Route::post('about-cg-police/update', "AboutPoliceController@update")

@@ -1,18 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="container">
+    <div class="columns">
+        <div class="column is-8 is-offset-2 ">
+            <div class="box">
+                <p class="title">{{ __('Dashboard') }}</p>
+                <hr><br>
 
-    <div class="hero is-medium is-white">
-        <div class="hero-body">
-            <div class="container has-text-centered">
-                <h1 class="title">
-                    Mor Police Admin
-                </h1>
-                <h2 class="subtitle">
-                    
-                </h2>
             </div>
         </div>
-  </div>
-    
+    </div>
+</div>
 @endsection
