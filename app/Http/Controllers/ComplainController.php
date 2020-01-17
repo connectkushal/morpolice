@@ -63,7 +63,20 @@ class ComplainController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $complain = $request->validate([
+            'body' => 'required',
+
+        ]);
+
+        Complain::create([
+            'body' => $complain['body'],
+            'category_id' => $request->input('category_id'),
+            'subcategory_id' => $request->input('subcategory_id'),
+        ]);
+
+        if($request->isJson()){
+            return response()->json($request->all(), 200);
+        }
     }
 
     /**
