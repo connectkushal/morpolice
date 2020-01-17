@@ -20,6 +20,7 @@ class ComplainController extends Controller
 
             $subcwise = \App\ComplainSubcategory::where('name', $subcategory)
             ->with('complains')
+            ->latest()
             ->get();
             
             $complains = $subcwise->first()->complains;
@@ -29,13 +30,14 @@ class ComplainController extends Controller
             
             $categorywise = \App\ComplainCategory::where('name', $category)
             ->with('complains')
+            ->latest()
             ->get();
 
             $complains = $categorywise->first()->complains;
         }
         
         else {
-            $complains = \App\Complain::all();
+            $complains = \App\Complain::latest()->get();
         }
 
         //dd($complains->first());

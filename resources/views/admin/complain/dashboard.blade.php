@@ -97,11 +97,11 @@
                   
                 <div class="columns">
                     <div class="column is-2">
-                        <strong>Action Taken </strong>{{$complain->action_taken}}
+                        <strong>Action Taken </strong>
                     </div>
                     <div class="content">
                         <div class="column">
-                            <p> {{$complain->body}} </p>
+                            <p> {{$complain->action_taken}} </p>
                         </div>
                     </div>
                 </div>
