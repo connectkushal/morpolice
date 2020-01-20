@@ -19,30 +19,43 @@ class ComplainController extends Controller
         if($subcategory != null) {
 
             $subcwise = \App\ComplainSubcategory::where('name', $subcategory)
-            ->with('complains')
-            ->latest()
-            ->get();
+                ->first();
             
-            $complains = $subcwise->first()->complains;
+            $complains = $subcwise
+                ->complains()
+                ->orderBy('created_at', 'desc')
+                ->get();
+            
+            //return $complains;
+
         }
     
         elseif($category !== null && $subcategory == null) {
             
             $categorywise = \App\ComplainCategory::where('name', $category)
-            ->with('complains')
-            ->latest()
-            ->get();
+                ->first();
 
-            $complains = $categorywise->first()->complains;
+            $complains = $categorywise
+                ->complains()
+                ->orderBy('created_at', 'desc')
+                ->get();
+
+             //return $complains;
         }
         
         else {
             $complains = \App\Complain::latest()->get();
         }
-
         //dd($complains->first());
 
+        // $c = collect('complains');
+        // return $complains;
+
         $categories = \App\ComplainCategory::with('subcategories')->get();
+        
+        if (\Request::isJson()) {
+            return $complains;
+        } else
         
         return view('admin.complain.dashboard', compact(['complains', 'categories', 'category', 'subcategory']));
     }

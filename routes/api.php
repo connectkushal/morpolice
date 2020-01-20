@@ -19,6 +19,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::post('complain', 'ComplainController@store');
 
+Route::get('complains', 'ComplainController@index');
+Route::get('complains/{category}', 'ComplainController@index');
+Route::get('complains/{category}/{subcategory}', 'ComplainController@index');
+
 Route::get('complain/categories', 'ComplainCategoryController@index');
 Route::get('external-links', 'ExternalLinkController@index');
 Route::get('social-links', 'ExternalLinkController@social');
